@@ -1,0 +1,7 @@
+.bottom-1\/10 {
+    bottom: 10%;
+}
+.hover\:bg-button-hover:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgba(83,19,143,var(--tw-bg-opacity));
+}

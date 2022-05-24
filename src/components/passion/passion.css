@@ -1,0 +1,4 @@
+.bg-lotto {
+    --tw-bg-opacity: 1;
+    background-color: rgba(37,98,222,var(--tw-bg-opacity));
+}

@@ -1,0 +1,70 @@
+.preview-span {
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  width: initial;
+  height: initial;
+  background: none;
+  opacity: 1;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  max-width: 100%;
+}
+
+.preview-span .preview-item {
+  box-sizing: border-box;
+  display: block;
+  width: initial;
+  height: initial;
+  background: none;
+  opacity: 1;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  max-width: 100%;
+}
+
+.preview-span .preview-item .image-item {
+  display: block;
+  max-width: 100%;
+  width: initial;
+  height: initial;
+  background: none;
+  opacity: 1;
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.preview-span .image-item1 {
+  position: absolute;
+  inset: 0px;
+  box-sizing: border-box;
+  padding: 0px;
+  border: none;
+  margin: auto;
+  display: block;
+  width: 0px;
+  height: 0px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.preview-input {
+    margin-top: 1em;
+    margin-right: 1em;
+}
+
+.hover\:bg-primary-light:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(99 102 241/var(--tw-bg-opacity));
+}
+.bg-primary {
+    --tw-bg-opacity: 1;
+    background-color: rgb(79 70 229/var(--tw-bg-opacity));
+}
