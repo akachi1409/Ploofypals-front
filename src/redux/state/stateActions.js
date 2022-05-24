@@ -36,6 +36,9 @@ export const selectState = (state) => {
   };
 };
 
-export const uploadTrait = () =>{
-
+export const uploadTrait = (state, uploaded) =>{
+  return async (dispatch) => {
+    uploaded.push(state);
+    dispatch(uploadTraitRequest(uploaded));
+  }
 }

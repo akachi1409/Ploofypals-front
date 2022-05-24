@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate} from 'react-router-dom';
+import { uploadTrait } from "../../redux/state/stateActions";
 
 import ImageBG from "../../assets/imageBG.svg";
 
@@ -11,6 +12,8 @@ import "./upload.css";
 function Upload() {
   let navigate = useNavigate();
   const state = useSelector((state)=> state.state);
+  const dispatch = useDispatch();
+
   const [files, setFiles] = useState(new FormData());
   const [images, setImages] = useState([]);
   const [rarity, setRarity] = useState([]);
@@ -75,7 +78,11 @@ function Upload() {
     }
     try {
       const res = await axios.post("http://localhost:5000/upload", files);
-      console.log("res:", res);
+      if (res.status === 200 && res.data==="File uploaded!"){
+        dispatch ( uploadTrait(state.state, state.uploaded));
+        navigate("/")
+      }
+      // console.log("res:", res);
       // navigate("/");
     } catch (ex) {
       console.log(ex);
