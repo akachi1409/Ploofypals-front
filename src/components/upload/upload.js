@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate} from 'react-router-dom';
-import { uploadTrait } from "../../redux/state/stateActions";
+import { uploadTrait, cancelState } from "../../redux/state/stateActions";
 
 import ImageBG from "../../assets/imageBG.svg";
 
@@ -66,7 +66,6 @@ function Upload() {
     filesTemp.append("rarity", rarity);
     filesTemp.append("types", types);
     setFiles(filesTemp);
-    // console.log("files", files);
     var sumRarity = 0;
     for (var i = 0; i < rarity.length; i++) {
       sumRarity += rarity[i];
@@ -82,8 +81,6 @@ function Upload() {
         dispatch ( uploadTrait(state.state, state.uploaded));
         navigate("/")
       }
-      // console.log("res:", res);
-      // navigate("/");
     } catch (ex) {
       console.log(ex);
     }
@@ -103,6 +100,10 @@ function Upload() {
     setTypes(typesTemp);
     setFlag(!flag);
   };
+  const onCancel = ()=>{
+    dispatch(cancelState());
+    navigate("/")
+  }
   return (
     <div className="min-h-screen text-center relative">
       <div
@@ -121,6 +122,7 @@ function Upload() {
           data-name="Layer 2"
           className="block sticky top-0 z-10 cursor-pointer"
           fill="#4F46E5"
+          onClick = {() => onCancel()}
         >
           <path
             d="M22.5 31a.5.5 0 0 1-.354-.146L7.293 16 22.146 1.146a.5.5 0 0 1 .707.707L8.707 16l14.147 14.146A.5.5 0 0 1 22.5 31z"

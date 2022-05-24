@@ -23,6 +23,11 @@ const uploadTraitRequest = (payload) => {
   }
 }
 
+const cancelStateRequest = () =>{
+  return {
+    type: "CANCEL_STATE",
+  }
+}
 export const connect = () => {
   return async (dispatch) => {
     dispatch(connectRequest());
@@ -40,5 +45,10 @@ export const uploadTrait = (state, uploaded) =>{
   return async (dispatch) => {
     uploaded.push(state);
     dispatch(uploadTraitRequest(uploaded));
+  }
+}
+export const cancelState = () =>{
+  return async (dispatch) => {
+    dispatch(cancelStateRequest());
   }
 }

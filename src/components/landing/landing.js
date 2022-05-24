@@ -8,6 +8,7 @@ function Landing() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.state);
+  console.log("state:", state);
   const trait = (e) => {
     dispatch(selectState(e.target.name));
     navigate("/trait");

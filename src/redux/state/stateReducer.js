@@ -19,11 +19,15 @@ const blockchainReducer = (state = initialState, action) => {
         state: action.payload,
       };
     case "UPLOAD_TRAIT":
-      console.log(action)
       return{
         ...state,
         state:'',
         uploaded: action.payload
+      }
+    case "CANCEL_STATE":
+      return{
+        ...state,
+        state:''
       }
     default:
       return state;
