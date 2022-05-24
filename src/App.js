@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 import "./App.css";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Upload from "./components/upload/upload";
 import Landing from "./components/landing/landing";

@@ -2,6 +2,8 @@ const initialState = {
   loading: false,
   state:"",
   uploaded:[],
+  onGenerate: false,
+  onCreate: false,
   errorMsg: "",
 };
 
@@ -33,7 +35,27 @@ const blockchainReducer = (state = initialState, action) => {
       return{
         ...initialState,
         state:'',
-        uploaded: []
+        uploaded: [],
+        onGenerate: false,
+        onCreate: false
+      }
+    case "GENERATE_REQUEST":
+      return{
+        ...state,
+        onGenerate: true
+      }
+    case "GENERATE_SUCCESS":
+      return{
+        ...state,
+        onGenerate: false,
+        onCreate: true
+      }
+    case "GENERATE_FAIL":
+      return{
+        ...state,
+        onGenerate: false,
+        onCreate: false,
+        errorMsg: action.payload
       }
     default:
       return state;

@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./landing.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectState, resetState } from "../../redux/state/stateActions";
+import { selectState, resetState, generateArt } from "../../redux/state/stateActions";
+import { Modal, Button } from "react-bootstrap";
 
 function Landing() {
   let navigate = useNavigate();
@@ -16,8 +17,22 @@ function Landing() {
   };
 
   const onReset = () => {
-    dispatch(resetState())
-  }
+    dispatch(resetState());
+  };
+
+  const onGenerate = async () => {
+    try {
+      dispatch(generateArt());
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <div>
       <header>Home</header>
@@ -112,7 +127,9 @@ function Landing() {
           <img src="1.png" alt="This is sample." width={900} height={800}></img>
         </div>
         <div className="item4">
-          <button className="reset" onClick={() => onReset()}>Reset</button>
+          <button className="reset" onClick={() => onReset()}>
+            Reset
+          </button>
         </div>
         <div className="item3">
           <br></br>
@@ -163,8 +180,22 @@ function Landing() {
                 <br></br>
                 <br></br>
                 <br></br> */}
-          <button className="generate">Generate</button>
+          <button className="generate" onClick = {()=>onGenerate()}>Generate</button>
         </div>
+        <Modal show={state.onGenerate}  backdrop="static">
+          <Modal.Header closeButton>
+            <Modal.Title>Wait a miniute</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Art is being generated!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </div>
   );

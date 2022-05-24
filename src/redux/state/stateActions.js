@@ -1,5 +1,4 @@
-import { fetchData } from "../data/dataActions";
-
+import axios from "axios";
 
 
 const connectRequest = () => {
@@ -34,9 +33,27 @@ const resetStateRequest = () =>{
     type: "RESET_ALL",
   }
 }
+
+const generateRequest = () =>{
+  return{
+    type:"GENERATE_REQUEST"
+  }
+}
+
+const generateSuccess = () =>{
+  return{
+    type: "GENERATE_SUCCESS"
+  }
+}
+
+const generateFail = (payload) =>{
+  return {
+    type:"GENERATE_FAIL",
+    payload: payload
+  }
+}
 export const connect = () => {
   return async (dispatch) => {
-    dispatch(connectRequest());
     const provider = window.ethereum;
   };
 };
@@ -63,3 +80,28 @@ export const resetState = () =>{
     dispatch(resetStateRequest());
   }
 }
+export const generateArt = () =>{
+  return async (dispatch) => {
+    dispatch(generateRequest())
+    try{
+      const res = await axios.get("http://localhost:5000/generate");
+      if (res.status === 200 && res.data==="Art Collection is generated!"){
+        dispatch(generateSuccess())
+      }else{
+        dispatch(generateFail("Art collection geneate is failed!"))
+      }
+    }catch(err){
+      dispatch(generateFail("Some is wrong in the server!"))
+    }
+  }
+}
+// export const generateArtSuccess = () =>{
+//   return async (dispatch) => {
+//     dispatch(generateSuccess())
+//   }
+// }
+// export const generateArtFail = () =>{
+//   return async (dispatch) => {
+//     dispatch(generateFail())
+//   }
+// }
