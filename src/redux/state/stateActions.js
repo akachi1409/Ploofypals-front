@@ -28,6 +28,12 @@ const cancelStateRequest = () =>{
     type: "CANCEL_STATE",
   }
 }
+
+const resetStateRequest = () =>{
+  return {
+    type: "RESET_ALL",
+  }
+}
 export const connect = () => {
   return async (dispatch) => {
     dispatch(connectRequest());
@@ -50,5 +56,10 @@ export const uploadTrait = (state, uploaded) =>{
 export const cancelState = () =>{
   return async (dispatch) => {
     dispatch(cancelStateRequest());
+  }
+}
+export const resetState = () =>{
+  return async (dispatch) => {
+    dispatch(resetStateRequest());
   }
 }

@@ -33,6 +33,8 @@ function Upload() {
     toast(msg);
   };
   const handleFile = (e) => {
+    if (e.target.files.length==0)
+    return;
     var file = e.target.files[0];
     console.log("file:" + e.target.files[0].name);
     var typesTemp = types;

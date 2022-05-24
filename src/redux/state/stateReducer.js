@@ -29,6 +29,12 @@ const blockchainReducer = (state = initialState, action) => {
         ...state,
         state:''
       }
+    case "RESET_ALL":
+      return{
+        ...initialState,
+        state:'',
+        uploaded: []
+      }
     default:
       return state;
   }
