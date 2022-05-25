@@ -35,7 +35,7 @@
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "start": "serve -s build",
-    "test": "craco start",
+    "test": "set PORT=80 && craco start",
     "build": "craco build",
     "eject": "react-scripts eject"
   },
