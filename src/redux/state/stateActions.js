@@ -84,7 +84,7 @@ export const generateArt = () =>{
   return async (dispatch) => {
     dispatch(generateRequest())
     try{
-      const res = await axios.get("http://44.192.117.177:5000/generate");
+      const res = await axios.get("http://44.192.117.177:80/generate");
       if (res.status === 200 && res.data==="Art Collection is generated!"){
         dispatch(generateSuccess())
       }else{
