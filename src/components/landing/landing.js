@@ -29,14 +29,27 @@ function Landing() {
   };
 
   const [show, setShow] = useState(false);
+  const [showRefresh, setShowRefresh] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const onRefresh = () => setShowRefresh(true);
+  const handleCloseShowRefresh = () => setShowRefresh(false);
+  const handelRefresh = () => {
+
+  }
+
+  const onPreview = () => { navigate('/download')}
   return (
     <div>
       <header>Home</header>
       <div className="grid-container">
+        <div className="item5">
+          <button className="reset" onClick={() => onRefresh()}>
+            Refresh
+          </button>
+        </div>
         <div className="item1">
           <br></br>
           <br></br>
@@ -181,6 +194,11 @@ function Landing() {
                 <br></br>
                 <br></br> */}
           <button className="generate" onClick = {()=>onGenerate()}>Generate</button>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <button className="generate" onClick = {()=>onPreview()}>Preview & Download</button>
         </div>
         <Modal show={state.onGenerate}  backdrop="static">
           <Modal.Header closeButton>
@@ -193,6 +211,20 @@ function Landing() {
             </Button>
             <Button variant="primary" onClick={handleClose}>
               Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
+        <Modal show={showRefresh}  backdrop="static">
+          <Modal.Header>
+            <Modal.Title>Alert</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Are you going to delete all the uploaded files and generated images?</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseShowRefresh}>
+              Cancel
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Yes
             </Button>
           </Modal.Footer>
         </Modal>
