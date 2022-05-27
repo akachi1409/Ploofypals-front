@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectState, resetState, generateArt } from "../../redux/state/stateActions";
 import { Modal, Button } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import axios from "axios";
 
 function Landing() {
   let navigate = useNavigate();
@@ -28,6 +32,8 @@ function Landing() {
     }
   };
 
+  const notify = (msg) => toast(msg);
+
   const [show, setShow] = useState(false);
   const [showRefresh, setShowRefresh] = useState(false);
 
@@ -36,8 +42,18 @@ function Landing() {
 
   const onRefresh = () => setShowRefresh(true);
   const handleCloseShowRefresh = () => setShowRefresh(false);
-  const handelRefresh = () => {
-
+  const handleRefresh = async () => {
+    try{
+      const res = await axios.get("http://44.192.117.177:80/refresh");
+      if (res.status === 200 && res.data==="Refreshed all the data."){
+        notify("Removed all the uploaded traits and generated images.")
+      }else{
+        notify("Something went wrong, please contact administrator of thie page.")
+      }
+    }catch(err){
+      notify("Error message: ", err);
+    }
+    handleCloseShowRefresh();
   }
 
   const onPreview = () => { navigate('/download')}
@@ -200,6 +216,7 @@ function Landing() {
           <br></br>
           <button className="generate" onClick = {()=>onPreview()}>Preview & Download</button>
         </div>
+        <ToastContainer />
         <Modal show={state.onGenerate}  backdrop="static">
           <Modal.Header closeButton>
             <Modal.Title>Wait a miniute</Modal.Title>
@@ -223,7 +240,7 @@ function Landing() {
             <Button variant="secondary" onClick={handleCloseShowRefresh}>
               Cancel
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={()=>handleRefresh()}>
               Yes
             </Button>
           </Modal.Footer>
