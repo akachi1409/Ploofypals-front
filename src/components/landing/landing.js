@@ -146,11 +146,11 @@ function Landing() {
               Panel
             </button>
           )}
-          {/* <br></br>
+          <br></br>
                 <br></br>
                 <br></br>
                 <br></br>
-                <button onClick={trait} name='Background' className="landing-button">Background</button> */}
+                <button onClick={trait} name='Background' className="landing-button">Background</button>
         </div>
         <div className="item2">
           <img src="1.png" alt="This is sample." width={900} height={800}></img>
@@ -222,14 +222,14 @@ function Landing() {
             <Modal.Title>Wait a miniute</Modal.Title>
           </Modal.Header>
           <Modal.Body>Art is being generated!</Modal.Body>
-          <Modal.Footer>
+          {/* <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
             <Button variant="primary" onClick={handleClose}>
               Save Changes
             </Button>
-          </Modal.Footer>
+          </Modal.Footer> */}
         </Modal>
         <Modal show={showRefresh}  backdrop="static">
           <Modal.Header>
