@@ -17,7 +17,7 @@ function App() {
           <Route path="/trait" element={<Upload/>}/>
           <Route path="/download" element={<Download/>}/>
           <Route path="/downRare" element={<DownRare/>}/>
-          <Route path="/downLet" element={<DownLeg/>}/>
+          <Route path="/downLeg" element={<DownLeg/>}/>
         </Routes>
       </Router>
     </div>
