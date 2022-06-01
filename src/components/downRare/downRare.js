@@ -1,40 +1,39 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate} from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { saveAs } from 'file-saver';
-import "./download.css";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { saveAs } from "file-saver";
+import "../download/download.css";
 
-function Download() {
-    let navigate = useNavigate();
+function DownRare() {
+  let navigate = useNavigate();
   const [firstLoad, setFirstLoad] = useState(true);
   const [number, setNumber] = useState(0);
   const [images, setImages] = useState([]);
   const [flag, setFlag] = useState(true);
   useEffect(async () => {
     if (firstLoad) {
-      const res = await axios.get("http://44.192.117.177:80/images/normal");
-      const length = res.data.length -1;
+      const res = await axios.get("http://44.192.117.177:80/images/rare");
+      const length = res.data.length - 1;
       setNumber(length);
       var temp = [];
-      const previewLength = length>3? 3: length;
+      const previewLength = length > 3 ? 3 : length;
       for (var i = 0; i < previewLength; i++) {
-        
-        temp.push("http://44.192.117.177:80/result/normal/" + res.data[i]);
+        temp.push("http://44.192.117.177:80/result/rare/" + res.data[i]);
       }
       setImages(temp);
       setFirstLoad(false);
       setFlag(!flag);
     }
   }, [firstLoad]);
-  
-  const onCancel = ()=>{
-    navigate("/")
-  }
 
-  const downImage = () =>{
-      saveAs("http://44.192.117.177/result/result.zip", "image.jpg")
-  }
+  const onCancel = () => {
+    navigate("/");
+  };
+
+  const downImage = () => {
+    saveAs("http://44.192.117.177/result/result.zip", "image.jpg");
+  };
   return (
     <div>
       <header>Download</header>
@@ -75,34 +74,31 @@ function Download() {
               id="headlessui-dialog-title-6"
             >
               <h2 className="text-4xl font-normal my-8 capitalize">
-                <span>{"There are " + number + " generate Normal arts."}</span>
+                <span>{"There are " + number + " generate Rare arts."}</span>
               </h2>
             </div>
-            <div style={{display: 'flex'}}>
-            {images.map((item, index) => (
-              <div
-                style={{ outline: "none", width: "265px"}}
-                key={index}
-              >
-                <div>
-                  <div style={{ width: "100%", display: "inline-block" }}>
-                    <div className="w-11/12 m-auto border border-gray-light rounded-xl">
-                      <div className="block border-b border-gray-light rounded-xl relative">
-                        <span className="download-span1">
-                          <span className="download-span2">{index}</span>
-                          <img
-                            src={item}
-                            decoding="async"
-                            data-nimg="responsive"
-                            className="rounded-xl preview-img"
-                          />
-                        </span>
+            <div style={{ display: "flex" }}>
+              {images.map((item, index) => (
+                <div style={{ outline: "none", width: "265px" }} key={index}>
+                  <div>
+                    <div style={{ width: "100%", display: "inline-block" }}>
+                      <div className="w-11/12 m-auto border border-gray-light rounded-xl">
+                        <div className="block border-b border-gray-light rounded-xl relative">
+                          <span className="download-span1">
+                            <span className="download-span2">{index}</span>
+                            <img
+                              src={item}
+                              decoding="async"
+                              data-nimg="responsive"
+                              className="rounded-xl preview-img"
+                            />
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
             </div>
             {number > 0 && (
               <div style={{ marginTop: "3em" }}>
@@ -122,4 +118,4 @@ function Download() {
   );
 }
 
-export default Download;
+export default DownRare;

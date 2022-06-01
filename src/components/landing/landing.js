@@ -57,6 +57,8 @@ function Landing() {
   }
 
   const onPreview = () => { navigate('/download')}
+  const onPreviewRare = () => { navigate('/downRare')}
+  const onPreviewLeg = () => { navigate('/downLeg')}
   return (
     <div>
       <header>Home</header>
@@ -147,10 +149,19 @@ function Landing() {
             </button>
           )}
           <br></br>
-                <br></br>
-                <br></br>
-                <br></br>
-                <button onClick={trait} name='Background' className="landing-button">Background</button>
+          <br></br>
+          <br></br>
+          <br></br>
+          {state.uploaded.includes("Background") ? (
+            <button className="landing-disabled-button" disabled={true}>
+              Background(Uploaded)
+            </button>
+          ) : (
+            <button onClick={trait} name='Background' className="landing-button">
+              Background
+            </button>
+          )}
+          
         </div>
         <div className="item2">
           <img src="1.png" alt="This is sample." width={900} height={800}></img>
@@ -214,7 +225,17 @@ function Landing() {
           <br></br>
           <br></br>
           <br></br>
-          <button className="generate" onClick = {()=>onPreview()}>Preview & Download</button>
+          <button className="generate" onClick = {()=>onPreview()}>Preview & Download (Normal)</button>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <button className="generate" onClick = {()=>onPreviewRare()}>Preview & Download (Rare)</button>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <button className="generate" onClick = {()=>onPreviewLeg()}>Preview & Download (Legendary)</button>
         </div>
         <ToastContainer />
         <Modal show={state.onGenerate}  backdrop="static">

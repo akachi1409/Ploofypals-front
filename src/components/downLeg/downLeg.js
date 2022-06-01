@@ -3,9 +3,9 @@ import axios from "axios";
 import { useNavigate} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { saveAs } from 'file-saver';
-import "./download.css";
+import "../download/download.css";
 
-function Download() {
+function DownLeg() {
     let navigate = useNavigate();
   const [firstLoad, setFirstLoad] = useState(true);
   const [number, setNumber] = useState(0);
@@ -13,18 +13,17 @@ function Download() {
   const [flag, setFlag] = useState(true);
   useEffect(async () => {
     if (firstLoad) {
-      const res = await axios.get("http://44.192.117.177:80/images/normal");
-      const length = res.data.length -1;
-      setNumber(length);
-      var temp = [];
-      const previewLength = length>3? 3: length;
-      for (var i = 0; i < previewLength; i++) {
-        
-        temp.push("http://44.192.117.177:80/result/normal/" + res.data[i]);
-      }
-      setImages(temp);
-      setFirstLoad(false);
-      setFlag(!flag);
+        const res = await axios.get("http://44.192.117.177:80/images/legendary");
+        const length = res.data.length -1;
+        setNumber(length);
+        var temp = [];
+        const previewLength = length>3? 3: length;
+        for (var i = 0; i < previewLength; i++) {
+          temp.push("http://44.192.117.177:80/result/legendary/" + res.data[i]);
+        }
+        setImages(temp);
+        setFirstLoad(false);
+        setFlag(!flag);
     }
   }, [firstLoad]);
   
@@ -75,7 +74,7 @@ function Download() {
               id="headlessui-dialog-title-6"
             >
               <h2 className="text-4xl font-normal my-8 capitalize">
-                <span>{"There are " + number + " generate Normal arts."}</span>
+                <span>{"There are " + number + " generate Legendary arts."}</span>
               </h2>
             </div>
             <div style={{display: 'flex'}}>
@@ -122,4 +121,4 @@ function Download() {
   );
 }
 
-export default Download;
+export default DownLeg;
