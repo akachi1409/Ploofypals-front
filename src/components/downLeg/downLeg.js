@@ -32,7 +32,7 @@ function DownLeg() {
   }
 
   const downImage = () =>{
-      saveAs("http://44.192.117.177/result/result.zip", "image.jpg")
+      saveAs("http://44.192.117.177/result/legendary/result.zip", "image.jpg")
   }
   return (
     <div>

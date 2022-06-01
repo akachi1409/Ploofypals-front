@@ -33,7 +33,7 @@ function Download() {
   }
 
   const downImage = () =>{
-      saveAs("http://44.192.117.177/result/result.zip", "image.jpg")
+      saveAs("http://44.192.117.177/result/normal/result.zip", "image.jpg")
   }
   return (
     <div>
