@@ -82,7 +82,6 @@ function Landing() {
               Head
             </button>
           )}
-
           <br></br>
           <br></br>
           <br></br>
@@ -161,7 +160,6 @@ function Landing() {
               Background
             </button>
           )}
-          
         </div>
         <div className="item2">
           <img src="1.png" alt="This is sample." width={900} height={800}></img>
@@ -209,6 +207,19 @@ function Landing() {
           ) : (
             <button onClick={trait} name="Armor" className="landing-button">
               Armor
+            </button>
+          )}
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          {state.uploaded.includes("Breed") ? (
+            <button className="landing-disabled-button" disabled={true}>
+              Breed(Uploaded)
+            </button>
+          ) : (
+            <button onClick={trait} name="Breed" className="landing-button">
+              Breed
             </button>
           )}
           <br></br>
