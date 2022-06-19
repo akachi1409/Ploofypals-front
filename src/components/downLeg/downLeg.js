@@ -74,7 +74,7 @@ function DownLeg() {
               id="headlessui-dialog-title-6"
             >
               <h2 className="text-4xl font-normal my-8 capitalize">
-                <span>{"There are " + number + " generate Legendary arts."}</span>
+                <span>{"There are " + number + " generated Legendary NFTs."}</span>
               </h2>
             </div>
             <div style={{display: 'flex'}}>
