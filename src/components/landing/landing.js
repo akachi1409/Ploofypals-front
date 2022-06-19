@@ -251,7 +251,7 @@ function Landing() {
         <ToastContainer />
         <Modal show={state.onGenerate}  backdrop="static">
           <Modal.Header closeButton>
-            <Modal.Title>Wait a miniute</Modal.Title>
+            <Modal.Title>Wait a minute.</Modal.Title>
           </Modal.Header>
           <Modal.Body>Art is being generated!</Modal.Body>
           {/* <Modal.Footer>
