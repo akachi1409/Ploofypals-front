@@ -44,7 +44,7 @@ function Landing() {
   const handleCloseShowRefresh = () => setShowRefresh(false);
   const handleRefresh = async () => {
     try{
-      const res = await axios.get("http://44.192.117.177:80/refresh");
+      const res = await axios.get("http://54.146.68.142:80/refresh");
       if (res.status === 200 && res.data==="Refreshed all the data."){
         notify("Removed all the uploaded traits and generated images.")
       }else{

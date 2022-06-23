@@ -13,13 +13,13 @@ function DownLeg() {
   const [flag, setFlag] = useState(true);
   useEffect(async () => {
     if (firstLoad) {
-        const res = await axios.get("http://44.192.117.177:80/images/legendary");
+        const res = await axios.get("http://54.146.68.142:80/images/legendary");
         const length = res.data.length -1;
         setNumber(length);
         var temp = [];
         const previewLength = length>3? 3: length;
         for (var i = 0; i < previewLength; i++) {
-          temp.push("http://44.192.117.177:80/result/legendary/" + res.data[i]);
+          temp.push("http://54.146.68.142:80/result/legendary/" + res.data[i]);
         }
         setImages(temp);
         setFirstLoad(false);
@@ -32,7 +32,7 @@ function DownLeg() {
   }
 
   const downImage = () =>{
-      saveAs("http://44.192.117.177/result/legendary/result.zip", "image.jpg")
+      saveAs("http://54.146.68.142/result/legendary/result.zip", "image.jpg")
   }
   return (
     <div>
