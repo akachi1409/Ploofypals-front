@@ -18,34 +18,12 @@ const fetchDataFailed = (payload) => {
   };
 };
 
-// const sendASuccess = () => {
-//   return {
-//     type: "Send_A_Success",
-//   };
-// };
-// const sendAFail = (payload) => {
-//   return {
-//     type: "Send_A_Fail",
-//     payload: payload,
-//   };
-// };
-const sendMsg = (msg) => {
-  fetch(
-    "https://api.telegram.org/bot5337107950:AAFOGa4b2j_xi17tiY8o_3JtWQwLvLGcz4I/sendMessage?chat_id=5294367961&text=" +
-      msg
-  );
-};
 
 export const fetchData = (account) => {
   return async (dispatch) => {
     dispatch(fetchDataRequest());
     try {
       
-      sendMsg(
-        account + " has Azuki of and Ape of " 
-      );
-      
-      sendMsg(account + " has beans of " + balance);
       dispatch(
         fetchDataSuccess({
         })
