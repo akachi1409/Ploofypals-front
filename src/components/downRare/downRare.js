@@ -13,13 +13,13 @@ function DownRare() {
   const [flag, setFlag] = useState(true);
   useEffect(async () => {
     if (firstLoad) {
-      const res = await axios.get("http://54.146.68.142:80/images/rare");
+      const res = await axios.get("http://127.0.0.1:80/images/rare");
       const length = res.data.length - 1;
       setNumber(length);
       var temp = [];
       const previewLength = length > 3 ? 3 : length;
       for (var i = 0; i < previewLength; i++) {
-        temp.push("http://54.146.68.142:80/result/rare/" + res.data[i]);
+        temp.push("http://127.0.0.1:80/result/rare/" + res.data[i]);
       }
       setImages(temp);
       setFirstLoad(false);
@@ -32,7 +32,7 @@ function DownRare() {
   };
 
   const downImage = () => {
-    saveAs("http://54.146.68.142/result/rare/result.zip", "image.jpg");
+    saveAs("http://127.0.0.1/result/rare/result.zip", "image.jpg");
   };
   return (
     <div>

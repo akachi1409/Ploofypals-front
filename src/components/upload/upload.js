@@ -78,7 +78,7 @@ function Upload() {
       return;
     }
     try {
-      const res = await axios.post("http://54.146.68.142:80/upload", files);
+      const res = await axios.post("http://127.0.0.1:80/upload", files);
       if (res.status === 200 && res.data==="File uploaded!"){
         dispatch ( uploadTrait(state.state, state.uploaded));
         navigate("/")
